@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- v28 -->
+<meta charset="UTF-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<title>Scanner · Forge CRM</title>
+<script>
+(function(){var vv=window.visualViewport,w=(vv&&vv.width)||window.innerWidth||1640,h=(vv&&vv.height)||window.innerHeight||900,s=Math.min(w/1640,h/900);if(!(s>0.05))s=1;var x=Math.max(0,(w-1640*s)/2),y=Math.max(0,(h-900*s)/2);var r=document.documentElement;r.style.setProperty("--app-scale",String(s));r.style.setProperty("--app-h","900px");r.style.setProperty("--app-x",x+"px");r.style.setProperty("--app-y",y+"px");})();
+</script>
+
+
+<meta name="theme-color" content="#F3F5F7" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/desk.css?v=v28" />
+<link rel="stylesheet" href="css/desk-more.css?v=v28" />
+<link rel="stylesheet" href="css/pages.css?v=v28" />
+</head>
+<body>
+<div id="stage">
+<div class="app" id="app">
+  <header class="header">
+    <div class="traffic" aria-hidden="true"><b class="r"></b><b class="y"></b><b class="g"></b></div>
+    <div class="word">Forge<span>CRM</span><small class="ver">28</small></div>
+    <nav class="nav-links">
+      <a href="index.html">Leads</a>
+      <a href="pipeline.html">Pipeline</a>
+      <a href="inbox.html">Inbox</a>
+      <a href="scanner.html" class="on">Scanner</a>
+      <a href="underwriting.html">Underwriting</a>
+      <a href="messages.html">Messages</a>
+    </nav>
+    <label class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+      <input id="q" placeholder="Search statements" autocomplete="off" />
+      <kbd>/</kbd>
+    </label>
+    <div class="header-actions">
+      <span class="live" id="livePill"><i></i> On a call</span>
+      <button type="button" class="bt-btn off" id="btBtn" data-act="devices" title="Phones" aria-label="Phones">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg>
+        <i></i>
+      </button>
+      <div class="avatar" title="Cole Brennan">CB</div>
+    </div>
+  </header>
+  <div class="work">
+    <div class="page-head">
+      <div>
+        <h1>Scanner</h1>
+        <div class="meta" id="scanMeta"></div>
+      </div>
+      <div class="page-actions">
+        <label class="search" style="margin:0">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+          <input id="scanQ" placeholder="Account, company, month" autocomplete="off" />
+        </label>
+        <button class="btn primary" id="newScan" type="button">New scan</button>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="scroll"><div class="scan-grid" id="grid"></div></div>
+  </div>
+</div>
+</div>
+<div class="overlay" id="overlay"></div>
+<div class="toast" id="toast"></div>
+<script src="js/data.js?v=v28"></script>
+<script src="js/data1.js?v=v28"></script>
+<script src="js/data2.js?v=v28"></script>
+<script src="js/data3.js?v=v28"></script>
+<script src="js/view.js?v=v28"></script>
+<script src="js/shared.js?v=v28"></script>
+<script src="js/page-shell.js?v=v28"></script>
+<script src="js/scanner.js?v=v28"></script>
+</body>
+</html>
