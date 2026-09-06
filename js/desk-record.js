@@ -105,7 +105,7 @@ function activityBlock(l) {
       <p class="pitch">${esc(l.pitch)}</p>
     </div>
     <div class="act-block">
-      <div class="k">Activity</div>
+      <div class="k"><span>Activity</span><button type="button" class="act-more" data-act="history">View full history</button></div>
       ${shown.map(a => {
         const k = actKind(a.what);
         return `<div class="act-row">
@@ -134,6 +134,7 @@ function renderDesk() {
         </div>
         <div class="money"><span class="k">Approved</span><span class="v">${money(appr)}</span></div>
       </div>
+      ${factsStrip(l)}
       <div class="sheet-x">
         <div class="quad">
           <h3>Owner</h3>

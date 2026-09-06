@@ -1,4 +1,4 @@
-# Forge CRM (v28)
+# Forge CRM (v30)
 
 Static desk. Keep the folders together.
 
@@ -34,6 +34,29 @@ own script (`js/pipeline.js`, `js/inbox.js`, `js/scanner.js`,
 Leave `.nojekyll` in the repo root so GitHub Pages serves JS/CSS.
 
 Open `index.html`, or from this folder: `python3 -m http.server 8080`
+
+## v30 changes from the prior build
+- `factsStrip()` (owner% / entity / position / time-in-business, under the
+  company name) is now actually called from `renderDesk()` — it existed
+  before but nothing rendered it.
+- Added a "View full history" link on the Activity section that opens the
+  existing Notes + Activity modal (the modal already existed; nothing opened
+  it before).
+
+## v29 changes from the prior build
+- `css/desk-more.css`: removed a dead `.kv .v .qacts` rule (an earlier
+  `margin-left:2px` copy that a later same-file rule always overrode), a dead
+  `.thread-who` rule (merged into the one that was actually winning), and a
+  dead `.facts-strip{display:none}` rule left over from before the strip was
+  redesigned.
+- `css/pages.css`: removed `.kpi .v.warn` — no code ever applies a `warn`
+  class to a `.kpi .v`, only `bad`/`ok`.
+- Confirmed no cross-file duplicate function names, no duplicate DOM IDs on
+  any page, all JS passes `node --check`, and all 6 pages load with zero
+  console/runtime errors.
+- Found (not yet fixed): `factsStrip()` in `desk-record.js` is defined but
+  never called, and no "View full history" link exists anywhere in the JS —
+  both were previously reported as wired in; they are not, on this build.
 
 ## v28 changes from the prior build
 - `app0.js`–`app6.js` and `viewer.js` merged into the named `desk-*.js` files

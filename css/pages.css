@@ -388,10 +388,6 @@
   margin-top: 6px
 }
 
-.kpi .v.warn {
-  color: var(--warn)
-}
-
 .kpi .v.bad {
   color: var(--bad)
 }
