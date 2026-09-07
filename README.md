@@ -1,4 +1,4 @@
-# Forge CRM (v31)
+# Forge CRM (v30)
 
 Static desk. Keep the folders together.
 
@@ -34,38 +34,6 @@ own script (`js/pipeline.js`, `js/inbox.js`, `js/scanner.js`,
 Leave `.nojekyll` in the repo root so GitHub Pages serves JS/CSS.
 
 Open `index.html`, or from this folder: `python3 -m http.server 8080`
-
-## v31 changes from the prior build
-- Full redesign of the Leads middle panel (Application/Bank Statements/
-  Financial Summary/Owner & Business/Contact/AI Sales Pitch/Notes/Activity).
-  Old 4-quad grid (`.sheet-x`/`.quad`) removed entirely.
-- New Application section: Requested + Approved (now reads the real `l.offer`
-  field — the header "Approved" figure was previously a fabricated
-  `roundRev(avg)+150000` formula, not real data; both now use `l.offer`).
-- New Bank Statements section: bank name, full account number, avg monthly
-  deposits, ending balance, daily cash flow (new `flow.in`/`flow.out` mock
-  fields added per lead), MTD (date + balance only, shown only when a lead
-  has MTD data), MCA (lender, computed est. monthly burden, remaining
-  balance), most recent 3 months with statement files.
-- Fixed `bankBrand()` in shared.js — it silently mislabeled every bank other
-  than Wells Fargo/Bank of America as "Chase" (PNC, Mercury, TD, M&T were
-  all wrong). Now correct for all 8 banks in the mock dataset; benefits
-  every place bankBrand() is used, not just this redesign.
-- New Notes section on the main panel (latest note + "View full history") —
-  previously notes only existed inside the history modal.
-- One visual accent: a quiet gray band with a navy left rail groups
-  Application + Bank Statements + Financial Summary as one "financials"
-  region. Everything else is plain white with thin dividers. No icons, no
-  multi-color zones.
-- Removed dead CSS: `.sheet-x`, `.quad` (+ nth-of-type variants, including a
-  leftover duplicate block further down the file), `.files-block`/`.files-k`,
-  `.below`, `.stmt-kv` (never referenced by any markup), `.money .asked`
-  (never referenced), old `.act-block .k` rules replaced by `.sp-head`.
-- Verified: 2 clean audit/test passes on the identical final build — CSS
-  braces balanced, JS syntax clean, zero duplicate selectors/functions/IDs,
-  zero console errors across all 8 leads on every page.
-- Rollback: tag `pre-financials-redesign` marks the exact commit before this
-  change if a revert is ever needed.
 
 ## v30 changes from the prior build
 - `factsStrip()` (owner% / entity / position / time-in-business, under the

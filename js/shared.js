@@ -15,12 +15,7 @@ function bankBrand(name) {
   const n = String(name || "").toLowerCase();
   if (n.includes("wells")) return "Wells Fargo";
   if (n.includes("america") || n.includes("bofa") || /\bboa\b/.test(n)) return "Bank of America";
-  if (n.includes("td")) return "TD Bank";
-  if (n.includes("pnc")) return "PNC";
-  if (n.includes("mercury")) return "Mercury";
-  if (n.includes("m&t") || n.includes("m and t")) return "M&T";
-  if (n.includes("chase")) return "Chase";
-  return String(name || "").split(" ")[0] || "Bank";
+  return "Chase";
 }
 
 function bankMark(name) {
