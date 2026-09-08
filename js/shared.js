@@ -15,7 +15,12 @@ function bankBrand(name) {
   const n = String(name || "").toLowerCase();
   if (n.includes("wells")) return "Wells Fargo";
   if (n.includes("america") || n.includes("bofa") || /\bboa\b/.test(n)) return "Bank of America";
-  return "Chase";
+  if (n.includes("td")) return "TD Bank";
+  if (n.includes("mercury")) return "Mercury";
+  if (n.includes("pnc")) return "PNC";
+  if (n.includes("m&t") || n.includes("m & t")) return "M&T";
+  if (n.includes("chase")) return "Chase";
+  return String(name || "").split(" ")[0] || "Bank";
 }
 
 function bankMark(name) {
@@ -33,8 +38,8 @@ function bankMark(name) {
 function displayName(n) { return String(n).replace(/^Dr\.\s+/i, ""); }
 
 function hue(str) {
-  const pal = {ns:"#2B6E72",hl:"#9A5628",bd:"#8A7020",ro:"#4E6230",lu:"#2E6A48",mw:"#7A3E50",kp:"#3A5480",ap:"#8A3A32"};
-  const rest = ["#5C5348","#2B6E72","#9A5628","#8A7020","#4E6230","#2E6A48","#7A3E50","#3A5480","#8A3A32"];
+  const pal = {ns:"#2563EB",hl:"#0D9488",bd:"#7C3AED",ro:"#DB2777",lu:"#C2410C",mw:"#059669",kp:"#4F46E5",ap:"#0891B2"};
+  const rest = ["#2563EB","#0D9488","#7C3AED","#DB2777","#C2410C","#059669","#4F46E5","#0891B2","#B91C1C","#65A30D","#9333EA","#0369A1"];
   const s = String(str || "");
   if (typeof LEADS !== "undefined") {
     const l = LEADS.find(x => x.id===s || x.company===s || x.contact===s || displayName(x.contact)===s);

@@ -35,7 +35,7 @@
     if (!h) return;
     side = h.dataset.side;
     startX = e.clientX;
-    startRail = readW("--rail-w", 480);
+    startRail = readW("--rail-w", 460);
     startDock = readW("--dock-w", 560);
     startW = side === "rail" ? startRail : startDock;
     h.classList.add("drag");
@@ -55,16 +55,16 @@
   document.addEventListener("mouseup", () => {
     if (!side) return;
     document.querySelectorAll(".handle").forEach(h => h.classList.remove("drag"));
-    storeSet(LS.rail, readW("--rail-w", 480));
+    storeSet(LS.rail, readW("--rail-w", 460));
     storeSet(LS.dock, readW("--dock-w", 560));
     side = null;
   });
   document.addEventListener("dblclick", (e) => {
     const h = e.target.closest(".handle");
     if (!h) return;
-    if (h.dataset.side === "rail") window.setPaneWidths(480, readW("--dock-w", 560), "rail");
-    else window.setPaneWidths(readW("--rail-w", 480), 560, "dock");
-    storeSet(LS.rail, readW("--rail-w", 480));
+    if (h.dataset.side === "rail") window.setPaneWidths(460, readW("--dock-w", 560), "rail");
+    else window.setPaneWidths(readW("--rail-w", 460), 560, "dock");
+    storeSet(LS.rail, readW("--rail-w", 460));
     storeSet(LS.dock, readW("--dock-w", 560));
     placePad();
   });

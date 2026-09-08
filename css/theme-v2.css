@@ -22,25 +22,62 @@
   --dialer: var(--accent);
 
   /* Panel widths */
-  --rail-w: 480px;
+  --rail-w: 460px;
   --dock-w: 560px;
 }
 
-/* ── Middle panel: grey-box sections ──
-   Turns the existing 2x2 quad grid (Owner / Business / Contact / Statements)
-   into separated grey cards instead of one seamless sheet. */
+/* JetBrains Mono for numeric data, matching the reference palette */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+.money .v, .stmt-kv .v, .stmt-kv .v .num, .kv .v.mono, .lead-row .amt {
+  font-family: 'JetBrains Mono', var(--font);
+}
+
+/* ── Middle panel: grey box scoped to Statements/financial numbers only ──
+   Matches the reference file's pattern — grey fill is reserved for the
+   financial data card, not every section. Owner/Business/Contact sit on
+   plain white with just a divider, same as before. */
 .sheet-x {
-  gap: 12px;
+  gap: 0;
 }
 .quad {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+.sheet-x > .quad:nth-of-type(4) {
   background: var(--sunken);
   border: 1px solid var(--line);
   border-radius: 10px;
+  box-shadow: none;
 }
-.sheet-x > .quad:nth-of-type(2),
-.sheet-x > .quad:nth-of-type(4),
+.sheet-x > .quad:nth-of-type(1),
+.sheet-x > .quad:nth-of-type(2) {
+  border-bottom: 1px solid var(--line);
+}
+.sheet-x > .quad:nth-of-type(2) {
+  box-shadow: inset 1px 0 0 var(--line);
+}
 .sheet-x > .quad:nth-of-type(3) {
   box-shadow: none;
+}
+/* Contact quad: phone rows (number + up to 3 icons) don't fit paired
+   side-by-side at this panel width — stack to full width instead so
+   nothing gets clipped or overlaps the neighboring quad. */
+.sheet-x > .quad:nth-of-type(3) .pair {
+  grid-template-columns: 1fr;
+}
+
+/* Grid/flex items don't shrink below their content size by default, which
+   let long values (addresses, emails) overflow past their quad's boundary
+   into the next one. Forcing min-width:0 down the chain lets the existing
+   ellipsis/overflow rules actually clip instead of bleeding sideways. */
+.sheet-x,
+.sheet-x .quad,
+.sheet-x .pair,
+.sheet-x .kv,
+.sheet-x .kv .v,
+.sheet-x .kv .vt {
+  min-width: 0;
 }
 
 /* Pitch block accent line matches the new brand blue instead of fixed navy */
@@ -55,4 +92,28 @@
 /* User avatar (topbar) was a hardcoded slate color, not tied to the accent */
 .avatar {
   background: var(--accent);
+}
+
+/* Lead row: number badge overlays the avatar corner instead of its own
+   column, so the avatar sits at the row's left edge. */
+.lead-row {
+  grid-template-columns: 32px 1fr auto;
+}
+.lead-row .idx {
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--surface, #fff);
+  border: 1px solid var(--line);
+  font-size: 8px;
+  line-height: 13px;
+  color: var(--dim);
+  text-align: center;
+  z-index: 1;
+}
+.lead-row .av {
+  position: relative;
 }

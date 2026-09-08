@@ -42,7 +42,7 @@ function statementsBlock(l) {
         <button ${open}>${kv("Bal", money(s.end))}</button>`;
     }).join("");
     return `<div class="stmt-grid">
-      ${kv("Bank", esc(a.name))}
+      ${kv("Bank", esc(bankBrand(a.name)))}
       ${kv("Account", esc(a.acct))}
       ${rows}
     </div>`;
