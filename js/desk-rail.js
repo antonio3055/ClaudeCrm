@@ -68,9 +68,9 @@ function qactPhone(n, who, sms, wa) {
 function applyWidths() {
   const r = storeGet(LS.rail);
   const d = storeGet(LS.dock);
-  if (window.setPaneWidths) window.setPaneWidths(r ? +r : 520, d ? +d : 560);
+  if (window.setPaneWidths) window.setPaneWidths(r ? +r : 480, d ? +d : 560);
   else {
-    document.documentElement.style.setProperty("--rail-w", (r ? +r : 520) + "px");
+    document.documentElement.style.setProperty("--rail-w", (r ? +r : 480) + "px");
     document.documentElement.style.setProperty("--dock-w", (d ? +d : 560) + "px");
   }
 }

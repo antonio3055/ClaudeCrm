@@ -21,7 +21,7 @@
   --dialer: var(--accent);
 
   /* Panel widths */
-  --rail-w: 520px;
+  --rail-w: 480px;
   --dock-w: 560px;
 }
 
