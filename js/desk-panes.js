@@ -3,9 +3,9 @@
    Must be the LAST desk script loaded — it calls renderAll() and friends. */
 
 (function resize() {
-  const CANVAS = 1640, HANDLES = 10, MID_MIN = 720;
-  const RAIL_MIN = 260, RAIL_MAX = 480;
-  const DOCK_MIN = 300, DOCK_MAX = 520;
+  const CANVAS = 1640, HANDLES = 10, MID_MIN = 550;
+  const RAIL_MIN = 260, RAIL_MAX = 560;
+  const DOCK_MIN = 300, DOCK_MAX = 600;
   function readW(prop, fallback) {
     return parseInt(getComputedStyle(document.documentElement).getPropertyValue(prop), 10) || fallback;
   }
@@ -35,8 +35,8 @@
     if (!h) return;
     side = h.dataset.side;
     startX = e.clientX;
-    startRail = readW("--rail-w", 480);
-    startDock = readW("--dock-w", 430);
+    startRail = readW("--rail-w", 520);
+    startDock = readW("--dock-w", 560);
     startW = side === "rail" ? startRail : startDock;
     h.classList.add("drag");
     e.preventDefault();
@@ -55,17 +55,17 @@
   document.addEventListener("mouseup", () => {
     if (!side) return;
     document.querySelectorAll(".handle").forEach(h => h.classList.remove("drag"));
-    storeSet(LS.rail, readW("--rail-w", 480));
-    storeSet(LS.dock, readW("--dock-w", 430));
+    storeSet(LS.rail, readW("--rail-w", 520));
+    storeSet(LS.dock, readW("--dock-w", 560));
     side = null;
   });
   document.addEventListener("dblclick", (e) => {
     const h = e.target.closest(".handle");
     if (!h) return;
-    if (h.dataset.side === "rail") window.setPaneWidths(480, readW("--dock-w", 430), "rail");
-    else window.setPaneWidths(readW("--rail-w", 480), 430, "dock");
-    storeSet(LS.rail, readW("--rail-w", 480));
-    storeSet(LS.dock, readW("--dock-w", 430));
+    if (h.dataset.side === "rail") window.setPaneWidths(520, readW("--dock-w", 560), "rail");
+    else window.setPaneWidths(readW("--rail-w", 520), 560, "dock");
+    storeSet(LS.rail, readW("--rail-w", 520));
+    storeSet(LS.dock, readW("--dock-w", 560));
     placePad();
   });
 })();

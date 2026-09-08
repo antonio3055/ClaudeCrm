@@ -38,7 +38,7 @@ function hang() {
     l.activity.unshift({when:"Just now", what:`Call · ${state.dial.contact} · ${dur}`});
     l.lastAgo = "just now";
   }
-  state.dial.status = "idle"; state.dial.elapsed = 0; state.keypadOpen = false;
+  state.dial.status = "idle"; state.dial.elapsed = 0; state.keypadOpen = false; state.dial.onHold = false;
   clearInterval(tick); renderAll(); toast("Call ended");
 }
 
@@ -88,6 +88,12 @@ document.addEventListener("click", (e) => {
   if (act === "hang") { hang(); return; }
   if (act === "mute") { state.dial.muted = !state.dial.muted; renderDialerBar(); return; }
   if (act === "spk") { state.dial.speaker = !state.dial.speaker; renderDialerBar(); return; }
+  if (act === "hold") { state.dial.onHold = !state.dial.onHold; renderDialerBar(); toast(state.dial.onHold ? "Call on hold" : "Call resumed"); return; }
+  if (act === "transfer") {
+    const n = prompt("Transfer to number:");
+    if (n) { toast("Transferring to " + n + "…"); setTimeout(hang, 1500); }
+    return;
+  }
   if (act === "toggle-pad") { state.keypadOpen = !state.keypadOpen; placePad(); return; }
   if (act === "dtmf") {
     const k = b.dataset.k;

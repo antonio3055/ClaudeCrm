@@ -81,7 +81,7 @@ function renderDialer(l, d) {
   const live = ["connected","dialing"].includes(d.status);
   const who = d.contact || displayName(l.contact);
   const num = d.number || l.mobiles[0].n;
-  const st = d.status==="idle" ? "Ready" : d.status==="dialing" ? "Calling" : "Connected";
+  const st = d.status==="idle" ? "Ready" : d.onHold ? "On hold" : d.status==="dialing" ? "Calling" : "Connected";
   return `
     <div class="who">
       <div class="nm">${esc(who)}</div>
@@ -97,6 +97,8 @@ function renderDialer(l, d) {
         <button class="callgo" data-act="call" data-n="${esc(num)}" data-who="${esc(who)}">Call</button>` : `
         <button data-act="mute" class="${d.muted?"on":""}" title="Mute">${ico("mic",14)}</button>
         <button data-act="spk" class="${d.speaker?"on":""}" title="Speaker">${ico("spk",14)}</button>
+        <button data-act="hold" class="${d.onHold?"on":""}" title="Hold">${ico("hold",14)}</button>
+        <button data-act="transfer" title="Transfer">${ico("transfer",14)}</button>
         <button data-act="toggle-pad" class="${state.keypadOpen?"on":""}" title="Keypad">${ico("grid",14)}</button>
         <button class="hang" data-act="hang">Hang up</button>`}
     </div>`;

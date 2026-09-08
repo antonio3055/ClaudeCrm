@@ -69,7 +69,9 @@ function ico(name, s=16) {
     minus: '<path d="M5 12h14"/>',
     doc: '<path d="M7 3h8l5 5v13H7z"/><path d="M15 3v5h5"/>',
     mailAll: '<path d="M2 8h13v9H2z"/><path d="m2 8 6.5 5L15 8"/><path d="M9 5h13v9" opacity=".45"/><path d="m9 5 6.5 5L22 5" opacity=".45"/>',
-    search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/>'
+    search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/>',
+    hold: '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
+    transfer: '<path d="M7 7h11l-3-3M17 17H6l3 3"/>'
   };
   return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${p[name]||""}</svg>`;
 }

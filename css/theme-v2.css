@@ -1,0 +1,52 @@
+/* Forge CRM — theme-v2.css
+   New color palette + layout overrides. Loaded AFTER desk.css, desk-more.css,
+   and pages.css so these values win via normal CSS cascade. Original files
+   are untouched — this file only redefines shared custom properties and
+   adds a small number of new rules for the grey-box section treatment. */
+
+:root {
+  /* Palette (exact values) */
+  --bg: #F2F4F8;
+  --sunken: #F7F8FC;
+  --fg: #1E2235;
+  --muted: #5A6078;
+  --dim: #8C93AB;
+  --line: #E2E6F0;
+
+  /* Brand accent — used across topbar, buttons, focus states, and the dialer */
+  --accent: #3B6FD4;
+  --accent-2: #2F5BB8; /* derived hover shade — not from source palette, needed for :hover states */
+
+  /* Dialer now matches the topbar/brand blue */
+  --dialer: var(--accent);
+
+  /* Panel widths */
+  --rail-w: 520px;
+  --dock-w: 560px;
+}
+
+/* ── Middle panel: grey-box sections ──
+   Turns the existing 2x2 quad grid (Owner / Business / Contact / Statements)
+   into separated grey cards instead of one seamless sheet. */
+.sheet-x {
+  gap: 12px;
+}
+.quad {
+  background: var(--sunken);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.sheet-x > .quad:nth-of-type(2),
+.sheet-x > .quad:nth-of-type(4),
+.sheet-x > .quad:nth-of-type(3) {
+  box-shadow: none;
+}
+
+/* Pitch block accent line matches the new brand blue instead of fixed navy */
+.pitch-block {
+  background: var(--sunken);
+  border-left-color: var(--accent);
+}
+.pitch-block .k {
+  color: var(--accent);
+}
